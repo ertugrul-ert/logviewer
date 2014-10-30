@@ -14,7 +14,7 @@ logviewer
 
 #### dizin yapısı
 * proje
-* **/** config 
+* **//** config 
 * **/** log
 * **/** test
 * **/** views**/**view.html
