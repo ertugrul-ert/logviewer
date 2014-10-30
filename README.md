@@ -13,8 +13,8 @@ logviewer
   * config/config.php dosyasından log klasörünüzün yolunu belirltebilirsiniz.
 
 #### dizin yapısı
-proje
-- config 
+* proje
+* - config 
 * - log
 * - test
 * - views/view.html
