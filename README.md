@@ -14,10 +14,10 @@ logviewer
 
 #### dizin yapısı
 proje
-*-config 
-*-log
-*-test
-*-views/view.html
-*-vendor/ahir/ctrl/
-*-application/controllers/ctrl.php
+* - config 
+* - log
+* - test
+* - views/view.html
+* - vendor/ahir/ctrl/
+* - application/controllers/ctrl.php
 
