@@ -1,0 +1,21 @@
+{
+	
+    "require": {
+        "ahir/ctrl": "1.*",
+        "twig/twig": "1.16.*@dev"
+    },
+
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://packages.ahir.com.tr"
+        }
+    ],
+
+    "autoload": {
+		"classmap": [
+			"test"
+		]
+	}
+
+}

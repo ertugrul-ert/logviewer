@@ -1,0 +1,119 @@
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+ 
+ 	<script src="/views/ertscript.js"></script>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  <!-- html4  encoding setting-->
+	<meta charset="UTF-8">  <!-- html5 encoding setting-->
+	 
+</head>
+<body style="background-color:#E6E6FA;">
+
+ <nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+   <div class="navbar-header">
+   	 <a class="navbar-brand" href="#" style="height=1 width=20">   </a>
+          <a class="navbar-brand navbar-center" href="{{ctrlpath}}">Ahir - Log Viewer</a>
+        </div>
+  </div>
+</nav>
+
+<!-- sidebar which list the lognames  -->
+<div class="col-xs-2" >    
+	<div class="list-group">
+		<a href="#" class="list-group-item active">
+			<h4 class="list-group-item-heading">
+				Log Folder
+			</h4>
+		</a>
+		{% spaceless %}
+		{% for name in lognames %}
+		<a href="{{ ctrlpath ~  name.name ~ '/' ~ 1 ~ '/'~pgn.itemperpage }}" 
+		   {%if name.active == "active" %}  id="active-file-name"  {% endif %}  
+		   class="list-group-item {{name.active}}" >{{name.name}}
+		</a>
+		{% endfor %}
+		{% endspaceless %}
+
+	</div>
+</div>
+
+<div class="col-xs-10" >
+
+	<div class="panel panel-default ">
+		<div class="panel-body">
+
+		<ul class="pagination" style="display: inline;">
+			<li><a href="#">&laquo;</a></li>
+			{% for i in 1..pgn.totalpage	%}  
+			<li class="{% if pgn.currentpage == i %} active  {% endif %}">
+				<a href="{{ ctrlpath ~ pgn['pgPath'] ~'/'~ i~'/'~pgn.itemperpage }}">{{i}}</a></li>
+				<!-- pgn.pgPath ~ '/' ~ i  -->
+				{% endfor %}
+			<li><a href="#">&raquo;</a></li> 
+ 		</ul>
+	 
+
+			<img height=1 width=10 > <!-- space -->
+			<label>itemPerPage: </label>
+			<select class="form-control" style=" height:33.5px; width:60px; display: inline;"
+					onchange=" location='{{ ctrlpath ~ pgn['pgPath'] ~'/'~'1'~'/' }}' + this.options[this.selectedIndex].value;" >
+					{% spaceless %}
+					{%  set inc = [1, 2, 5, 8, 10] %}
+					{%for i in inc %}
+						<option 
+						{%if pgn.itemperpage == (i*5) %} 
+							{{ 'selected="selected"' }}
+						{% endif %} 
+						value="{{5*i}}">{{5*i}}
+						</option>
+					{% endfor %}
+					{% endspaceless %}
+			</select>
+
+
+			<img height=1 width=10> <!--  space -->
+			<h4 style="display: inline-block;"> 
+				<span class="label label-primary"> totalError: {{pgn.itemcount}} </span>
+			</h4>   
+
+ 			<img height=1 width=10> <!--  space -->
+ 			<a id="del_visible" class="btn btn-primary btn-md" role="button">Delete Displayed Logs</a>
+			 	  
+ 
+		</div>   <!--panel-body end -->
+	</div>   <!-- panel panel-default -->
+
+
+	<!-- ERROR MESSAGE LİSTİNG -->
+	<ul class="list-group">
+	{% spaceless %}
+	{% for line in currentlog %}
+	<a href="#" class="list-group-item ">
+  	    <h4 class="list-group-item-heading"> 
+  	       <div style="display:inline" id="date{{loop.index}}"> {{ line.date }} </div>
+  	         -
+  	         {%if line.hide_del_btn == false %} 
+  	         <button id="btdel{{loop.index}}" value="date{{loop.index}}" type="button" class="btn btn-primary btn-xs">delete</button>
+  	         {% endif %}
+  	    </h4>
+        <p class="list-group-item-text"> {{ line.message }} </p>
+    </a>
+	{% endfor %}
+	{% endspaceless %}
+	</ul>
+    <div style="height:100px;"></div> 
+   
+
+</div>    <!-- class="col-xs-10" end -->
+ 
+
+</body>
+</html>
+
+
+

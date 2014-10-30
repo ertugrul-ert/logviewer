@@ -1,0 +1,95 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+ <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+   
+    	<ul class="nav nav-pills">
+	    <li><a href="#">Home</a></li>
+	    <li><a href="#">Profile</a></li>
+	    <li><a href="#">Messages</a></li>
+	    <li><a href="#">...</a></li>
+	   </ul>
+ 
+  </div>
+</nav>
+
+<div class="col-xs-2" >  
+	<div class="list-group">
+		<?php //spagetti1 
+			$src_log = dirname( dirname(__FILE__) ) . '/log' ;  
+			$file_names = glob( $src_log .'/*.{log,txt}', GLOB_BRACE);  
+			foreach ($file_names as  $value) 
+			{
+				 '<a href="#" class="list-group-item">';
+				  basename($value ); // basename($value, '.log' ) 
+				 '</a>'; 
+			}
+			  
+		?>
+ 	  <a href="#" class="list-group-item">date1.log</a>
+	  <a href="#" class="list-group-item">date2.log</a>
+	 
+	</div>
+</div>
+    
+<div class="col-xs-10" >
+	<?php  //spagetti2 - metin getir
+	public function viewLog($logName='')
+	{
+		$src_log = dirname( dirname(__FILE__) ) .'/log/'. ;  
+ 
+		      $file = $filename;
+			    $contents = file($file);  // array of lines
+ 
+	         $lump =  $string ;  // 'asdasd - [string_here] ';
+	         $start_tag = '[';
+	         $end_tag = ']';
+	         // preg_match 		->   return $string 	$matches[1]  //( find first occurrences)
+	         // preg_match_all  ->   return $array 		$matches[1]  //( find multiple occurrences)
+	        if (preg_match('/'.preg_quote($start_tag).'(.*?)'.preg_quote($end_tag).'/s', $lump, $matches)) 
+	        {
+	        	//print_r($matches[1]);
+
+	        	echo '<div class="panel panel-default" >
+	        	  <div class="panel-heading">
+	        	    <h3 class="panel-title">';
+        	    echo $matches[1] ;
+        	    echo '</h3>
+	        	  </div>
+	        	  <div class="panel-body">
+	        	    Panel content - 1
+	        	  </div> 
+	        	</div>';
+	        }
+	}
+
+		    
+
+		?> 
+
+	<div class="panel panel-default" >
+	  <div class="panel-heading">
+	    <h3 class="panel-title">Panel title1</h3>
+	  </div>
+	  <div class="panel-body">
+	     Panel content - 1
+	  </div> 
+	</div>
+
+
+
+</div>
+ 
+		
+ 
+
+  
+
+
