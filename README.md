@@ -7,7 +7,9 @@ logviewer
   * codeigniter 2.2.0 (paket codeigniterla bütünleşmiş durumdadır.)
 
 ### Kullanım
-  * sitelinki/ctrl/test/sample url sini browsera girerek logviewer görüntülenebilir.
+   url sini browsera girerek logviewer görüntülenebilir.
+  > sitelinki/ctrl/test/sample  
+  
   
 ### çalışma mantığı 
   * config/config.php dosyasından log klasörünüzün yolunu belirltebilirsiniz.
