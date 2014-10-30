@@ -64,16 +64,6 @@ class Test extends Render {
 	}
 
 
-	//unused
-	public function setitemperpage($val)
-	{	
-		//$rltv_url =  '/ctrl/test/sample/'  ; //.  $pagination['pgPath']
-		$this->item_perpage = $val;
-		$ref_url = $_SERVER['HTTP_REFERER'];
-		header('Location: '.$ref_url);  
-		return;
-	}
-
 	public function calc_and_set_totalpage( $linecount, $itemperpage)
 	{
 		$totalpage =  (int) ceil($linecount / $itemperpage);
