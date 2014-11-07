@@ -1,3 +1,4 @@
+
 logviewer
 =========
   logviewer, log dosyalarını gösterir.
@@ -8,7 +9,7 @@ logviewer
 
 ### Kullanım
    url sini browsera girerek logviewer görüntülenebilir.
-  > sitelinki/ctrl/test/sample  
+   > **sitelinki/ctrl/test/sample**
   
   
 ### çalışma mantığı 
